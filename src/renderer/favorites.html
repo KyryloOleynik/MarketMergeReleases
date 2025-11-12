@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketMerge</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=TASA+Orbiter:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-4">
+
+        <a class="back-btn" href="./index.html">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <a href="./settings.html" class="settings-btn">
+            <i class="bi bi-gear-fill"></i>
+        </a>
+
+        <!-- Фильтры -->
+        <form id="searchForm" class="filters glass-card p-4">
+            <h5>Фильтры</h5>
+
+            <div class="row g-3 mb-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                <input id="liked-search" name="search" type="text" class="form-control" placeholder="Пошук за назвою...">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-search"></i>
+                </button>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <select id="liked-order" name="order" class="form-select">
+                <option value="price_asc">Спочатку дешеві</option>
+                <option value="price_desc">Спочатку дорогі</option>
+                <option value="new">Спочатку нові</option>
+                <option value="title_asc">За назвою</option>
+                </select>
+            </div>
+
+            <div class="col-md-3 d-flex gap-2">
+                <button id="liked-clear" type="reset" class="btn btn-glass flex-fill py-2 px-0" title="Сброс">
+                <i class="bi bi-x-lg"></i>
+                </button>
+                <button id="liked-refresh" type="button" class="btn btn-glass flex-fill py-2 px-0" title="Обновить">
+                <i class="bi bi-arrow-clockwise"></i>
+                </button>
+            </div>
+            </div>
+        </form>
+
+        <!-- Пустое состояние -->
+        <section id="liked-empty" class="text-center py-5 d-none">
+            <i class="bi bi-heart" style="font-size:3rem;"></i>
+            <h2 class="h4 mt-3">Вибране порожнє</h2>
+            <p class="text-secondary">Додайте товар натиснувши сердечко на карточці.</p>
+            <a href="./search.html" class="btn btn-glass">
+                <i class="bi bi-shop me-1"></i> Перейти до каталогу
+            </a>
+        </section>
+
+        <!-- Скелетоны -->
+        <div id="liked-skeletons" class="ads-grid" style="gap: 1.5rem;">
+            <div class="skeleton-card">
+            <div class="skeleton-left skeleton"></div>
+            <div class="skeleton-right">
+                <div class="skeleton skeleton-text title"></div>
+                <div class="skeleton skeleton-text price"></div>
+                <div class="skeleton skeleton-text short"></div>
+                <div class="skeleton skeleton-text small"></div>
+            </div>
+            </div>
+
+            <div class="skeleton-card">
+            <div class="skeleton-left skeleton"></div>
+            <div class="skeleton-right">
+                <div class="skeleton skeleton-text title"></div>
+                <div class="skeleton skeleton-text price"></div>
+                <div class="skeleton skeleton-text short"></div>
+                <div class="skeleton skeleton-text small"></div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Список избранных (сюда рендерит JS) -->
+        <div class="ads-grid"><div id="liked-list" class="content ads-grid mb-3 d-none"></div></div>
+
+        <!-- Счетчик -->
+        <div class="text-end">
+            <small id="liked-counter" class="text-secondary"></small>
+        </div>
+
+        <!-- Шаблон карточки (соответствует селекторам в JS) -->
+        <template id="tpl-liked-card">
+            <a class="liked-card ad-card position-relative text-decoration-none" target="_blank">
+                <div class="liked-image-wrapper image-wrapper position-relative">
+                    <img src="" alt="Товар">
+                    <div class="image-counter">1/3</div>
+                    <!-- condition-badge будет добавлен динамически -->
+                </div>
+
+                <div class="ad-info mt-2 w-100 liked-ad-info">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="liked-title mb-1">Назва</h6>
+                        <span class="liked-price price text-success fw-bold">500 грн</span>
+                    </div>
+
+                    <p class="liked-date date mb-1"><i class="bi bi-clock me-1"></i><span>Сьогодні</span></p>
+
+                    <p class="liked-location location mb-2 d-none">
+                        <i class="bi bi-geo-alt-fill me-1"></i><span class="liked-location-text">Київ</span>
+                    </p>
+
+                    <div class="d-flex justify-content-between">
+                        <span class="liked-marketplace marketplace marketplace-glass py-1 px-2">
+                            <i class="bi bi-shop me-1"></i> OLX
+                        </span>
+
+                        <button type="button" class="remove-liked btn btn-sm btn-glass" title="Удалить из избранного">
+                            <i class="bi bi-heartbreak"></i>
+                        </button>
+                    </div>
+                </div>
+            </a>
+        </template>
+
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/main_scripts.js"></script>
+  <script src="./js/favorites_scripts.js"></script>
+</body>
+</html>

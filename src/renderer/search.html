@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketMerge</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=TASA+Orbiter:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container my-5">
+
+  <a class="back-btn" href="./index.html">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <a href="./settings.html" class="settings-btn">
+      <i class="bi bi-gear-fill"></i>
+  </a>
+
+  <!-- Фильтры -->
+  <form id="searchForm" class="filters glass-card p-4">
+    <h5>Фільтри</h5>
+
+    <!-- Пошук по назві -->
+    <div class="input-group mb-4">
+      <input name="search" type="text" class="form-control" placeholder="Введіть назву товару..." required>
+      <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Пошук</button>
+    </div>
+
+    <!-- Маркетплейси -->
+    <div class="d-flex flex-wrap gap-1 mb-3">
+      <span>Маркетплейси:</span>
+
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="Kasta">
+        <i class="bi bi-shop"></i> Kasta<i class="bi bi-check2 ms-1"></i>
+      </button>
+      <!-- <button class="btn btn-dark btn-xs active" type="button" data-filter="Goofish">
+        <i class="bi bi-shop"></i> Goofish <i class="bi bi-check2 ms-1"></i>
+      </button> -->
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="eBay">
+        <i class="bi bi-shop"></i> eBay<i class="bi bi-check2 ms-1"></i>
+      </button>
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="Vestiaire">
+        <i class="bi bi-shop"></i> Vestiaire <i class="bi bi-check2 ms-1"></i>
+      </button>
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="Grailed">
+        <i class="bi bi-shop"></i> Grailed <i class="bi bi-check2 ms-1"></i>
+      </button>
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="Vinted">
+        <i class="bi bi-shop"></i> Vinted<i class="bi bi-check2 ms-1"></i>
+      </button>
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="OLX">
+        <i class="bi bi-shop"></i> OLX <i class="bi bi-check2 ms-1"></i>
+      </button>
+      <button class="btn btn-dark btn-xs active" type="button" data-filter="Shafa">
+        <i class="bi bi-shop"></i> Shafa <i class="bi bi-check2 ms-1"></i>
+      </button>
+    </div>
+
+    <!-- Существующие фильтры -->
+    <div class="row mb-3 g-3">
+      <div class="col-md-3">
+        <label>Ціна від:</label>
+        <input name="priceFrom" type="number" class="form-control" placeholder="0">
+      </div>
+      <div class="col-md-3">
+        <label>Ціна до:</label>
+        <input name="priceTo" type="number" class="form-control" placeholder="1000">
+      </div>
+
+      <!-- Категория -->
+      <div class="col-md-3">
+        <label>Категорія:</label>
+        <select name="category" class="form-select" id="categorySelect">
+          <option value="">Все</option>
+          <option value="mens_clothes">Чоловічий одяг</option>
+          <option value="womens_clothes">Жіночий одяг</option>
+          <option value="mens_sneakers">Чоловіче взуття</option>
+          <option value="womens_sneakers">Жіноче взуття</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label>Сортувати:</label>
+        <select name="order" class="form-select">
+          <option value="relevant">Найбільш релевантні</option>
+          <option value="l_h">Найбільш дешеві</option>
+          <option value="h_l">Найбільш дорогі</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label>Стан:</label>
+        <select name="condition" class="form-select">
+          <option value="">Будь-який</option>
+          <option value="new">Нове</option>
+          <option value="used">Б/У</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label>Місце:</label>
+        <select name="location" class="form-select">
+          <option value="">Будь-яке</option>
+          <option value="ukraine">Україна</option>
+          <option value="europe">Європа</option>
+          <option value="usa">США</option>
+          <option value="other">Інше</option>
+        </select>
+      </div>
+
+      <!-- Размеры одежды -->
+      <div id="sizesClothesContainer">
+        <label class="d-block mb-1">Одяг:</label>
+        <div class="d-flex flex-wrap gap-2">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="XXS" id="sizeXXS">
+            <label class="form-check-label" for="sizeXXS">XXS</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="XS" id="sizeXS">
+            <label class="form-check-label" for="sizeXS">XS</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="S" id="sizeS">
+            <label class="form-check-label" for="sizeS">S</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="M" id="sizeM">
+            <label class="form-check-label" for="sizeM">M</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="L" id="sizeL">
+            <label class="form-check-label" for="sizeL">L</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="XL" id="sizeXXL">
+            <label class="form-check-label" for="sizeXXL">XL</label>
+          </div>          
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesClothes[]" value="XXL" id="sizeXXL">
+            <label class="form-check-label" for="sizeXXL">XXL</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Размеры (множественный выбор) -->
+      <div id="sizesShoesContainer">
+        <label class="d-block mb-1">Взуття:</label>
+        <div class="d-flex flex-wrap gap-2">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="36" id="size36">
+            <label class="form-check-label" for="size36">36</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="36.5" id="size36_5">
+            <label class="form-check-label" for="size36_5">36.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="37" id="size37">
+            <label class="form-check-label" for="size37">37</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="37.5" id="size37_5">
+            <label class="form-check-label" for="size37_5">37.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="38" id="size38">
+            <label class="form-check-label" for="size38">38</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="38.5" id="size38_5">
+            <label class="form-check-label" for="size38_5">38.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="39" id="size39">
+            <label class="form-check-label" for="size39">39</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="39.5" id="size39_5">
+            <label class="form-check-label" for="size39_5">39.5</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="40" id="size40">
+            <label class="form-check-label" for="size40">40</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="40.5" id="size40_5">
+            <label class="form-check-label" for="size40_5">40.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="41" id="size41">
+            <label class="form-check-label" for="size41">41</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="41.5" id="size41_5">
+            <label class="form-check-label" for="size41_5">41.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="42" id="size42">
+            <label class="form-check-label" for="size42">42</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="42.5" id="size42_5">
+            <label class="form-check-label" for="size42_5">42.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="43" id="size43">
+            <label class="form-check-label" for="size43">43</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="43.5" id="size43_5">
+            <label class="form-check-label" for="size43_5">43.5</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="44" id="size44">
+            <label class="form-check-label" for="size44">44</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="44.5" id="size44_5">
+            <label class="form-check-label" for="size44_5">44.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="45" id="size45">
+            <label class="form-check-label" for="size45">45</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="45.5" id="size45_5">
+            <label class="form-check-label" for="size45_5">45.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="46" id="size46">
+            <label class="form-check-label" for="size46">46</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="46.5" id="size46_5">
+            <label class="form-check-label" for="size46_5">46.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="47" id="size47">
+            <label class="form-check-label" for="size47">47</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="47.5" id="size47_5">
+            <label class="form-check-label" for="size47_5">47.5</label>
+          </div>
+          
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="48" id="size48">
+            <label class="form-check-label" for="size48">48</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="48.5" id="size48_5">
+            <label class="form-check-label" for="size48_5">48.5</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="49" id="size49">
+            <label class="form-check-label" for="size49">49</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="One size" id="sizeOne">
+            <label class="form-check-label" for="sizeOne">One size</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="sizesShoes[]" value="Другой" id="sizeOther">
+            <label class="form-check-label" for="sizeOther">Інший</label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- Сетка карточек -->
+  <div class="ads-grid">
+    <span class="text-muted mb-3" id="searchStatus">Ви ще не ввели запит.....</span>
+    <div class="content ads-grid mb-3 d-none"></div>
+    <div class="content-skeleton ads-grid"></div>
+  </div>
+
+</div>
+<script src="./js/main_scripts.js"></script>
+<script src="./js/search_scripts.js"></script>
+</body>
+</html>

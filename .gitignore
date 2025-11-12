@@ -1,0 +1,25 @@
+# зависимости
+/node_modules
+
+# сборки
+/dist
+/build
+/venv
+/out
+/releases
+/AI/build
+/AI/dist
+/AI/AI_using.spec
+
+# временные файлы
+*.log
+*.tmp
+*.cbm
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea

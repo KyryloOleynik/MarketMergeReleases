@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketMerge</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=TASA+Orbiter:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <a class="back-btn" href="./index.html">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <a href="#" class="settings-btn" title="Настройки">
+    <i class="bi bi-gear-fill"></i>
+  </a>
+
+  <div class="container page-wrap">
+    <div class="header-row top-glass-header d-flex flex-wrap">
+      <div>
+        <h1>Налаштування</h1>
+        <div class="subtle">Налаштуйте MarketMerge під себе — повідомлення, приватність, оформлення та інтеграції.</div>
+      </div>
+      <div class="d-flex gap-4 align-items-center">
+        <button id="saveTop" class="btn btn-glass">Зберегти</button>
+        <div class="text-end small-muted">Останнє збереження: <span id="lastSaved">—</span></div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="glass-card nav-left">
+          <div class="list-group list-group-flush" id="settingsNav" role="tablist">
+            <button class="list-group-item list-group-item-action active" data-bs-target="#account" type="button">Аккаунт <i class="bi bi-person ms-2"></i></button>
+            <button class="list-group-item list-group-item-action" data-bs-target="#notifications" type="button">Повідомлення <i class="bi bi-bell ms-2"></i></button>
+            <button class="list-group-item list-group-item-action" data-bs-target="#appearance" type="button">Оформлення <i class="bi bi-palette ms-2"></i></button>
+            <button class="list-group-item list-group-item-action" data-bs-target="#integrations" type="button">Інтеграції <i class="bi bi-plug ms-2"></i></button>
+            <button class="list-group-item list-group-item-action" data-bs-target="#support" type="button">Підтримка & Про додаток <i class="bi bi-info-circle ms-2"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="glass-card py-4">
+          <div class="tab-content">            
+            
+            <!-- ACCOUNT -->
+            <div class="tab-pane fade show active" id="account">
+              <h5 class="section-title">Акаунт</h5>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Ім'я</label>
+                  <input id="userName" class="form-control form-glass" placeholder="Ваше ім'я">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Електронна пошта</label>
+                  <input id="userEmail" class="form-control form-glass" type="email" placeholder="you@example.com">
+                </div>
+                <div class="col-md-12">
+                  <label class="form-label">Мова додатку</label>
+                  <select id="userLang" class="form-select form-glass" style="justify-self: center;">
+                    <option value="ru">Російська</option>
+                    <option value="uk">Українська</option>
+                    <option value="en">Англійська</option>
+                  </select>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                  <span class="form-label mb-0">AI функції</span>
+                  <label class="liquid-switch-refined mb-0">
+                    <input type="checkbox" id="aiFeatures">
+                    <span class="liquid-slider-refined"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- NOTIFICATIONS -->
+            <div class="tab-pane fade" id="notifications">
+              <h5 class="section-title">Повідомлення</h5>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label">Підвищена активність</label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="emailPromos">
+                    <label class="form-check-label small-primary" for="emailPromos">Отримувати email-розсилки про новинки та акції</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Push-повідомлення</label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="pushNotify">
+                    <label class="form-check-label small-primary" for="pushNotify">Повідомляти про повідомлення та замовлення</label>
+                  </div>
+                </div>
+
+                <div class="col-5">
+                  <label class="form-label">Частота повідомлень</label>
+                  <select id="notifFreq" class="form-select form-glass d-flex" style="justify-self: center;">
+                    <option value="instant">Миттєво</option>
+                    <option value="hourly">Пакетом — раз на годину</option>
+                    <option value="daily">Раз на день</option>
+                    <option value="none">Вимкнути</option>
+                  </select>
+                </div>
+
+                <div class="col-7">
+                  <label class="form-label">Канали</label>
+                  <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <button class="btn btn-glass btn-xs" data-channel="email">Email</button>
+                    <button class="btn btn-glass btn-xs" data-channel="sms">SMS</button>
+                    <button class="btn btn-glass btn-xs" data-channel="tg">Telegram</button>
+                    <button class="btn btn-glass btn-xs" data-channel="wh">WhatsApp</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- APPEARANCE -->
+            <div class="tab-pane fade" id="appearance">
+              <h5 class="section-title">Оформлення</h5>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label">Тема</label>
+                  <div class="btn-group ms-2" role="group" aria-label="Вибір теми">
+                    <input type="radio" class="btn-check" name="theme" id="themeLight" autocomplete="off" checked>
+                    <label class="btn btn-glass btn-xs" for="themeLight">Світла</label>
+
+                    <input type="radio" class="btn-check" name="theme" id="themeDark" autocomplete="off">
+                    <label class="btn btn-glass btn-xs" for="themeDark">Темна</label>
+
+                    <input type="radio" class="btn-check" name="theme" id="themeSystem" autocomplete="off">
+                    <label class="btn btn-glass btn-xs" for="themeSystem">Системна</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 d-flex align-items-center gap-3">
+                  <label class="form-label">Розмір шрифту</label>
+                  <select id="fontSize" class="form-select form-glass w-auto">
+                    <option value="small">Маленький</option>
+                    <option value="normal" selected>Звичайний</option>
+                    <option value="large">Великий</option>
+                  </select>
+                </div>
+
+                <div class="col-12 mt-2">
+                  <label class="form-label">Інтерфейс</label>
+                  <div class="d-flex gap-2 align-items-center">
+                    <button id="compactToggle" class="btn btn-glass btn-xs">Компактний режим</button>
+                    <div class="small-muted">Зменшує відступи та розміри карток</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- INTEGRATIONS -->
+            <div class="tab-pane fade" id="integrations">
+              <h5 class="section-title">Інтеграції</h5>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label class="form-label">Підключені сервіси</label>
+                  <ul class="list-unstyled small-muted">
+                    <li>Google: підключено <button class="btn btn-link btn-xs">Відключити</button></li>
+                    <li>VK: не підключено <button class="btn btn-link btn-xs">Підключити</button></li>
+                    <li>Telegram: підключено <button class="btn btn-link btn-xs">Відключити</button></li>
+                  </ul>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label">Webhook</label>
+                  <input id="webhookUrl" class="form-control form-glass" placeholder="https://example.com/webhook">
+                  <div class="small-muted mt-1">Використовуйте для інтеграції з зовнішніми сервісами.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="tab-pane fade" id="support">
+              <h5 class="section-title">Підтримка & Про додаток</h5>
+              <div class="row gy-3">
+                <div class="col-md-8">
+                  <p class="small-muted">Версія: <strong id="appVersion">1.4.2</strong> — Оновлень не знайдено.</p>
+                  <p class="small-muted">Якщо потрібна допомога, напишіть нам: <a href="mailto:support@marketmerge.example">support@marketmerge.example</a></p>
+                </div>
+                <div class="col-md-4 text-end">
+                  <button id="check-update" class="btn btn-glass btn-xs">Перевірити оновлення</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="save-bar mt-4">
+            <button id="resetBtn" class="btn btn-glass btn-sm">Скинути</button>
+            <button id="saveBtn" class="btn btn-glass btn-sm">Зберегти зміни</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/main_scripts.js"></script>
+  <script src="./js/settings_scripts.js"></script>
+</body>
+</html>
