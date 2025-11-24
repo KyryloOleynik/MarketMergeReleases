@@ -11,8 +11,6 @@
 [![Electron](https://img.shields.io/badge/Electron-Latest-47848F?style=for-the-badge&logo=electron&logoColor=white)](https://www.electronjs.org/)
 [![CatBoost](https://img.shields.io/badge/CatBoost-ML-FFCC00?style=for-the-badge&logo=catboost&logoColor=black)](https://catboost.ai/)
 
-[Features](#features) • [Demo](#demo) • [Installation](#installation) • [Usage](#usage) • [Technology](#technology-stack) • [Roadmap](#roadmap)
-
 </div>
 
 **MarketMerge** is a powerful desktop application that leverages machine learning to revolutionize e-commerce pricing strategies. Built for marketplace sellers, data analysts, and pricing specialists, it combines advanced AI models with an intuitive interface to deliver accurate price predictions and actionable insights.
@@ -57,6 +55,7 @@
 
 
 **MarketMerge** — your smart companion for marketplace price analysis and prediction.
+
 
 
 
