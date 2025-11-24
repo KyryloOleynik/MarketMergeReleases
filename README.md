@@ -1,5 +1,3 @@
-<img width="2559" height="1392" alt="image" src="https://github.com/user-attachments/assets/230a1b5b-209e-4db4-b9c5-e564383d2a9c" />﻿# MarketMerge — Price Prediction Application
-
 ## About
 
 **MarketMerge** is an application designed for intelligent price prediction in the e-commerce sector. It allows users to analyze marketplace data, predict product prices, and optimize pricing strategies with easy-to-use tools.
@@ -36,3 +34,4 @@
 <img width="2559" height="1392" alt="image" src="https://github.com/user-attachments/assets/90e85bb6-46a7-4a84-9d02-16de344e581b" />
 
 **MarketMerge** — your smart companion for marketplace price analysis and prediction.
+
