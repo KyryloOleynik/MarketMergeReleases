@@ -15,10 +15,6 @@
 
 </div>
 
----
-
-## About
-
 **MarketMerge** is a powerful desktop application that leverages machine learning to revolutionize e-commerce pricing strategies. Built for marketplace sellers, data analysts, and pricing specialists, it combines advanced AI models with an intuitive interface to deliver accurate price predictions and actionable insights.
 
 ### Why MarketMerge?
@@ -61,6 +57,7 @@
 
 
 **MarketMerge** — your smart companion for marketplace price analysis and prediction.
+
 
 
 
