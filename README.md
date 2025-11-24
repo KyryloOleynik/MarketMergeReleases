@@ -13,8 +13,6 @@
 
 [Features](#features) • [Demo](#demo) • [Installation](#installation) • [Usage](#usage) • [Technology](#technology-stack) • [Roadmap](#roadmap)
 
-<img src="https://github.com/user-attachments/assets/9ba54491-57ee-4561-88b6-6e86cab4313c" alt="MarketMerge Dashboard" width="800px" />
-
 </div>
 
 ---
@@ -63,6 +61,7 @@
 
 
 **MarketMerge** — your smart companion for marketplace price analysis and prediction.
+
 
 
 
