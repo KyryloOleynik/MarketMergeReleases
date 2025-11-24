@@ -30,8 +30,11 @@
 
 - npm start
 
+
 <img width="2559" height="1392" alt="image" src="https://github.com/user-attachments/assets/9ba54491-57ee-4561-88b6-6e86cab4313c" />
 <img width="2559" height="1392" alt="image" src="https://github.com/user-attachments/assets/90e85bb6-46a7-4a84-9d02-16de344e581b" />
 
+
 **MarketMerge** — your smart companion for marketplace price analysis and prediction.
+
 
